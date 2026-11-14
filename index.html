@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LEO书单">
+  <meta name="theme-color" content="#2b1810">
+  <meta name="description" content="小学1·2年级韩语推荐书单与家庭阅读记录。57册教科书收录与首尔教育厅儿童图书馆推荐图书。">
+  <title>小学1·2年级韩语推荐书单</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">LEO 家庭阅读</p>
+      <h1>小学1·2年级韩语推荐书单</h1>
+      <p class="summary">为目前读一年级、2027年3月升二年级的LEO整理的家庭阅读书单与阅读记录。可在木纹书架上选书、标记已读并打分，也可在「我的图书馆」查看月度统计和阅读记录。记录保存在本机浏览器中。</p>
+      <div class="callout info">
+        <strong>怎么用</strong>
+        <p>「推荐书架」里可按年级筛选、点封面看详情并标记已读。「我的图书馆」里可查最近12个月的完成量，也可按月份或书名查阅读记录。输入家庭密码后，已读、星级和认证日会在平板和手机之间自动同步。</p>
+      </div>
+      <div class="sync-bar" id="sync-bar"></div>
+      <div class="metrics" id="metrics"></div>
+    </header>
+
+    <section class="block">
+      <h2>书架与图书馆</h2>
+      <div class="seg" role="tablist" aria-label="页面切换" id="view-tabs">
+        <button type="button" class="seg-btn is-on" data-view="shelf">推荐书架</button>
+        <button type="button" class="seg-btn" data-view="library">我的图书馆</button>
+      </div>
+    </section>
+
+    <section class="block" id="shelf-view">
+      <h2 id="shelf-heading">推荐图书</h2>
+      <div class="seg wrap" id="grade-seg" role="group" aria-label="年级"></div>
+      <div class="filters">
+        <label>来源类型
+          <select id="source-sel"></select>
+        </label>
+        <label>体裁
+          <select id="genre-sel"></select>
+        </label>
+        <label>阅读状态
+          <select id="read-sel"></select>
+        </label>
+      </div>
+      <label class="search-label">搜索书名、作者或出版社
+        <input id="query-inp" type="search" placeholder="例如 노란우산、백희나、창비" autocomplete="off">
+      </label>
+      <div id="shelf-empty" hidden></div>
+      <div id="bookshelf" hidden>
+        <div class="wood-frame">
+          <div class="wood-inner" id="shelf-rows"></div>
+          <div class="pager" id="pager"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="library-view" hidden>
+      <h2>我的图书馆</h2>
+      <div class="seg" id="lib-tabs" role="tablist" aria-label="阅读状态"></div>
+      <p class="muted" id="lib-summary"></p>
+      <div class="chart" id="chart" aria-label="最近12个月完成量"></div>
+      <div class="filters">
+        <label>按月份筛选
+          <select id="month-sel"></select>
+        </label>
+        <label>按书名搜索
+          <input id="lib-query" type="search" placeholder="输入书名或作者" autocomplete="off">
+        </label>
+      </div>
+      <div id="lib-body"></div>
+    </section>
+
+    <section class="block detail" id="detail" hidden></section>
+
+    <section class="block sources">
+      <h2>资料来源与说明</h2>
+      <p class="muted">查阅日期：2026-11-15（韩国首尔时间）</p>
+      <ol class="steps">
+        <li>
+          <h3>教科书收录</h3>
+          <p>书目与著录信息来自首尔特别市教育厅西大门图书馆公告
+            <a href="https://sdmlib.sen.go.kr/sdmlib/board/view.do?board_idx=1727964&manage_idx=749&menu_idx=25" target="_blank" rel="noreferrer">《2022 개정 초등 교과 수록 도서(1~4학년) 소장 목록》</a>
+            （公告日期 2026-03-19）。这是馆藏综合目录，不同出版社的检定语文教科书，收录书可能不一样。</p>
+        </li>
+        <li>
+          <h3>学期区分（供参考）</h3>
+          <p>教育部未公布统一的“全出版社合并学期总表”。学期是对照 2025 年公开的学年学期书目
+            <a href="https://blog.naver.com/PostView.naver?blogId=moymoy&logNo=223763401754" target="_blank" rel="noreferrer">1学期</a>、
+            <a href="https://m.blog.naver.com/moymoy/223934101912" target="_blank" rel="noreferrer">2学期</a>
+            后标注的，仅供排课参考。</p>
+        </li>
+        <li>
+          <h3>机构推荐</h3>
+          <p>首尔特别市教育厅儿童图书馆
+            <a href="https://childlib.sen.go.kr/childlib/board/view.do?board_idx=1741589&manage_idx=2521&menu_idx=306" target="_blank" rel="noreferrer">2026年暑假年龄别推荐图书</a>
+            （布告 2026-06-30，小学1~2年级10册），以及
+            <a href="https://childlib.sen.go.kr/childlib/board/view.do?board_idx=1710063&manage_idx=2521&menu_idx=306" target="_blank" rel="noreferrer">2025年寒假年龄别推荐图书</a>
+            （布告 2025-12-02，小学1~2年级10册）。简介根据官方解题改写为一句中文。</p>
+        </li>
+        <li>
+          <h3>封面</h3>
+          <p>封面图片于 2026-11-15（韩国首尔时间）按书名、作者、出版社在
+            <a href="https://www.aladin.co.kr/" target="_blank" rel="noreferrer">알라딘</a>
+            与
+            <a href="https://search.kyobobook.co.kr/" target="_blank" rel="noreferrer">교보문고</a>
+            核对后，从约 500 像素原图下载，并保存为约 300 像素宽的图片。部分书使用近年再版封面，出版年份可能与教科书目录所列不完全一致。</p>
+        </li>
+      </ol>
+      <div class="callout warn">
+        <strong>本轮未能收录的书目</strong>
+        <p>本轮未找到可完整下载的韩国图书馆协会「올해의 책」低年级完整名单、学校图书馆期刊推荐目录全文（需购买期刊），以及어린이도서연구회全年名单，因此没有单独收录“获奖”专表。教科书篇目中的童诗集归入“童话”。机构推荐里有个别主题较深（如《전쟁과 나》），建议家长先翻看再决定是否一起读。图书馆链接只打开公共检索页，是否可借、是否有电子书需登录后确认。</p>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

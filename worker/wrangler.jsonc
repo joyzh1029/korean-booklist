@@ -1,0 +1,16 @@
+{
+  "name": "leo-korean-booklist",
+  "main": "index.js",
+  "compatibility_date": "2026-11-14",
+  "account_id": "421e9dd01893d68cd88bab3cc4b01cab",
+  "workers_dev": true,
+  "kv_namespaces": [
+    {
+      "binding": "BOOKLIST_KV",
+      "id": "58748e7bf71446fc8fe7687a395a7ac5"
+    }
+  ],
+  "secrets": {
+    "required": ["BOOKLIST_PASSCODE"]
+  }
+}
