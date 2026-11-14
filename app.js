@@ -491,7 +491,7 @@ function renderShelf(filtered) {
       const mark = marks[book.id] || emptyMark();
       html += `<button type="button" class="book" data-open="${esc(book.id)}" aria-label="${esc(book.title)}">
         <span class="book-badges">
-          <img src="${esc(coverSrc(book))}" alt="${esc(book.title)} 封面" width="300" height="420" loading="lazy">
+          <img src="${esc(coverSrc(book))}" alt="${esc(book.title)} 封面" width="300" loading="lazy">
           ${mark.read ? '<span class="badge">已读</span>' : ""}
           ${mark.rating > 0 ? `<span class="stars-mini">${"★".repeat(mark.rating)}</span>` : ""}
         </span>
